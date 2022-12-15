@@ -4,6 +4,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#03A9F4"
     tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/txtHeadingRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="FILL ALL YOUR INFORMATION"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtTxtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:hint="Name"
+        android:imeOptions="actionNext"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtHeadingRegister" />
+
+    <EditText
+        android:id="@+id/edtTxtEmployeeID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:hint="Employee ID"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="12"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtName" />
+
+    <EditText
+        android:id="@+id/edtTxtDateOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:hint="Date Of Birth"
+        android:imeOptions="actionNext"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtEmployeeID" />
+
+    <EditText
+        android:id="@+id/edtTxtDateOfJoining"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:hint="Date Of Joining"
+        android:imeOptions="actionNext"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtDateOfBirth" />
+
+    <EditText
+        android:id="@+id/edtTxtMobileNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:hint="Mobile Number"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtDateOfJoining" />
+
+    <EditText
+        android:id="@+id/edtTxtTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/drawable_white"
+        android:hint="Team"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtMobileNumber" />
+
+    <Button
+        android:id="@+id/btnRegisterSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtTxtTeam" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
