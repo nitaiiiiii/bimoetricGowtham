@@ -1,6 +1,9 @@
 package com.example.biometricapplication
 
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,10 +16,9 @@ class RegisterActivity : AppCompatActivity() {
     var calendarMonth = 0
     var calendarYear = 0
 
-    var edtTxtDateOfBirth :EditText? = null
-    var edtTxtDateOfJoining :EditText? = null
-
-
+    var edtTxtDateOfBirth: EditText? = null
+    var edtTxtDateOfJoining: EditText? = null
+    var btnRegisterSubmit: Button? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +27,34 @@ class RegisterActivity : AppCompatActivity() {
 
         edtTxtDateOfBirth = findViewById(R.id.edtTxtDateOfBirth)
         edtTxtDateOfJoining = findViewById(R.id.edtTxtDateOfJoining)
+        btnRegisterSubmit = findViewById(R.id.btnRegisterSubmit)
 
 
         setOnClick()
+        displayDialogPopup()
     }
 
-    fun setOnClick(){
+    private fun displayDialogPopup() {
+        val popupDialog = Dialog(this)
+        popupDialog.setCancelable(false)
+
+        popupDialog.setContentView(R.layout.popup)
+        popupDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val save = popupDialog.findViewById<Button>(R.id.btnSave)
+
+        btnRegisterSubmit?.setOnClickListener {
+            popupDialog.show()
+        }
+
+        save.setOnClickListener {
+            popupDialog.dismiss()
+        }
+
+
+    }
+
+    fun setOnClick() {
         edtTxtDateOfBirth?.setOnClickListener {
             getDateTimeCalender()
         }
@@ -46,24 +70,31 @@ class RegisterActivity : AppCompatActivity() {
         calendarMonth = calendar.get(Calendar.MONTH)
         calendarYear = calendar.get(Calendar.YEAR)
 
-        val datePickerDialog = DatePickerDialog(this, R.style.DatePickerTheme_Dark, DatePickerDialog.OnDateSetListener { view, year, month, day ->
-            val month = month + 1
-            var sMonth = ""
-            var sDay = ""
-            sMonth = if (month < 10) {
-                "0$month"
-            } else {
-                month.toString()
-            }
-            sDay = if (day < 10) {
-                "0$day"
-            } else {
-                day.toString()
-            }
-            val date = "$sMonth/$sDay/$year"
-            edtTxtDateOfBirth?.setText(date)
-            edtTxtDateOfJoining?.setText(date)
-        }, calendarYear, calendarMonth, calendarDay).let{
+        val datePickerDialog = DatePickerDialog(
+            this,
+            R.style.DatePickerTheme_Dark,
+            DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                val month = month + 1
+                var sMonth = ""
+                var sDay = ""
+                sMonth = if (month < 10) {
+                    "0$month"
+                } else {
+                    month.toString()
+                }
+                sDay = if (day < 10) {
+                    "0$day"
+                } else {
+                    day.toString()
+                }
+                val date = "$sMonth/$sDay/$year"
+                edtTxtDateOfBirth?.setText(date)
+                edtTxtDateOfJoining?.setText(date)
+            },
+            calendarYear,
+            calendarMonth,
+            calendarDay
+        ).let {
             it.show()
             it.setTitle("Date of Birth")
             it.setMessage("Date of Birth")
