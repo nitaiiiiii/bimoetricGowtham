@@ -4,10 +4,11 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -44,12 +45,16 @@ class RegisterActivity : AppCompatActivity() {
         val save = popupDialog.findViewById<Button>(R.id.btnSave)
 
         btnRegisterSubmit?.setOnClickListener {
-            popupDialog.show()
+
+                popupDialog.show()
+
         }
 
         save.setOnClickListener {
             popupDialog.dismiss()
         }
+
+
 
 
     }
