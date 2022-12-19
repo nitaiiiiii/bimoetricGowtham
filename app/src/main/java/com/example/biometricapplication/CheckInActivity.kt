@@ -68,7 +68,7 @@ class CheckInActivity : AppCompatActivity() {
                             findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
                             findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
                         } else {
-                            wishString = "Get Out from Office "
+                            wishString = "Office Closed"
 
                             findViewById<TextView>(R.id.tvStatus).text = "--"
                             findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
