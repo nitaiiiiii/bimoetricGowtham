@@ -33,7 +33,8 @@ class CheckInActivity : AppCompatActivity() {
     @SuppressLint("SimpleDateFormat")
     private fun setTextViews() {
         GlobalScope.launch(Dispatchers.IO) {
-            val model = BiometricDatabase.biometricRoomDB.biometricDao().selectBiometricData() as ArrayList<BiometricDataEntity>
+            val model = BiometricDatabase.biometricRoomDB.biometricDao()
+                .selectBiometricData() as ArrayList<BiometricDataEntity>
 
             withContext(Dispatchers.Main) {
                 val sdf = SimpleDateFormat("HH:mm")
@@ -42,10 +43,12 @@ class CheckInActivity : AppCompatActivity() {
                 var wishString = "Good Morning, Welcome "
 
                 val date1 = sdf.parse(currentTime)
-                val date2 = sdf.parse("09:00")
-                val date3 = sdf.parse("13:00")
-                val date4 = sdf.parse("14:00")
-                val date5 = sdf.parse("20:00")
+                val date2 = sdf.parse("9:00")
+                val date3 = sdf.parse("1:00")
+                val date4 = sdf.parse("2:00")
+                val date5 = sdf.parse("4:00")
+                val date6 = sdf.parse("4:15")
+                val date7 = sdf.parse("7:00")
 
                 try {
                     if (date1 != null) {
@@ -67,6 +70,30 @@ class CheckInActivity : AppCompatActivity() {
                             findViewById<TextView>(R.id.tvStatus).text = "Check - Out"
                             findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
                             findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
+                        } else if (date1.after(date4) && date1.before(date5)) {
+                            wishString = "Welcome"
+
+                            findViewById<TextView>(R.id.tvStatus).text = "On Work"
+                            findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
+                            findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
+                        }else if (date1.after(date5) && date1.before(date6)) {
+                            wishString = "Have Your Snacks"
+
+                            findViewById<TextView>(R.id.tvStatus).text = "Snacks time"
+                            findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
+                            findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
+                        }else if (date1.after(date6) && date1.before(date7)) {
+                            wishString = "Welcome"
+
+                            findViewById<TextView>(R.id.tvStatus).text = "On Work"
+                            findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
+                            findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
+                        }else if (date1.after(date7)) {
+                            wishString = "Thank You"
+
+                            findViewById<TextView>(R.id.tvStatus).text = "Check-Out"
+                            findViewById<TextView>(R.id.tvEmployeeId).text = model[0].EmployeeID
+                            findViewById<TextView>(R.id.tvTime).text = currentTime.toString()
                         } else {
                             wishString = "Office Closed"
 
@@ -79,9 +106,14 @@ class CheckInActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 val nameString = model[0].Name
-                spanStringBuilder(findViewById<TextView>(R.id.txtCheckInWelcome)!!, wishString + nameString, wishString.length, wishString.length + nameString.length)
+                spanStringBuilder(
+                    findViewById<TextView>(R.id.txtCheckInWelcome)!!,
+                    wishString + nameString,
+                    wishString.length,
+                    wishString.length + nameString.length
+                )
             }
-          }
+        }
     }
 
     /**

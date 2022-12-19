@@ -72,15 +72,15 @@ class RegisterActivity : AppCompatActivity() {
 
     fun setOnClick() {
         edtTxtDateOfBirth?.setOnClickListener {
-            getDateTimeCalender()
+            getDateTimeCalender(edtTxtDateOfBirth!!)
         }
         edtTxtDateOfJoining?.setOnClickListener {
-            getDateTimeCalender()
+            getDateTimeCalender(edtTxtDateOfJoining!!)
         }
     }
 
 
-    private fun getDateTimeCalender() {
+    private fun getDateTimeCalender(editText : EditText) {
         val calendar = Calendar.getInstance()
         calendarDay = calendar.get(Calendar.DAY_OF_MONTH)
         calendarMonth = calendar.get(Calendar.MONTH)
@@ -104,8 +104,7 @@ class RegisterActivity : AppCompatActivity() {
                     day.toString()
                 }
                 val date = "$sMonth/$sDay/$year"
-                edtTxtDateOfBirth?.setText(date)
-                edtTxtDateOfJoining?.setText(date)
+                editText.setText(date)
             },
             calendarYear,
             calendarMonth,
